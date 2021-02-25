@@ -1,0 +1,49 @@
+﻿body {
+    background-color: rgba(121, 69, 26, 0.7);
+}
+h1 
+{
+    text-align:center;
+    font-family: Sans-serif;
+   
+}
+h2
+{
+    letter-spacing: 2px;
+    background-color: antiquewhite;
+}
+img 
+{
+    margin:auto;
+    display:block;
+    border-radius:25px;
+}
+div {
+    border: dashed 2px black;
+    border-radius: 30px;
+    margin: 30px;
+    padding: 10px;
+    background-color: rgba(81, 234, 234, 0.5);
+}
+span
+{
+    font-weight: bold;
+}
+#nyelv
+{
+    margin-left:900px;
+    width: 200px;
+}
+#suli
+{
+    width:430px;
+    margin-left: 300px;
+
+}
+#hobbi
+{
+    width:190px;
+    margin-left:100px;
+}
+
+
