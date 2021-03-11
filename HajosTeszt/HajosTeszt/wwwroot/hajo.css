@@ -1,0 +1,11 @@
+﻿body {
+    background-color: rgba(121, 69, 26, 0.7);
+}
+.kattintható:hover {
+    background-color: fuchsia;
+    color: white;
+    cursor:pointer;
+}
+img {
+    border-radius: 25px;
+}
