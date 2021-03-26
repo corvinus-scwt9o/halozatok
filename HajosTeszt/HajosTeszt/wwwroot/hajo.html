@@ -4,16 +4,19 @@
     <meta charset="utf-8" />
     <title></title>
     <link href="hajo.css" rel="stylesheet">
+    <script src="hetedik.js"></script>
     <style>
         html, body {
             height: 100%;
         }
+
         div {
             margin: 10px;
             border: 2px dashed black;
             border-radius: 30px;
             background-color: rgba(81, 234, 234, 0.5);
         }
+
         #külső {
             height: 100%;
             display: flex;
@@ -55,7 +58,13 @@
         }
 
         .kerdes {
-            background-color:antiquewhite;
+            background-color: antiquewhite;
+        }
+        .jo {
+            background-color:green;
+        }
+        .rossz{
+            background-color:red;
         }
     </style>
 </head>
@@ -67,17 +76,17 @@
 
         <div id="középső">
             <div id="válaszok">
-                <div id="válasz1" class="kerdes kattintható">Válasz 1</div>
-                <div id="válasz2" class="kerdes kattintható jó">Válasz 2</div>
-                <div id="válasz3" class="kerdes kattintható rossz">Válasz 3</div>
+                <div id="válasz1" class="kerdes kattintható" onclick="válasz1Click()">Válasz 1</div>
+                <div id="válasz2" class="kerdes kattintható jó" onclick="válasz2Click()">Válasz 2</div>
+                <div id="válasz3" class="kerdes kattintható rossz" onclick="válasz3Click()">Válasz 3</div>
             </div>
             <div id="kép">
                 <img id="kép1" src="https://szoft1.comeback.hu/hajo/teszt-0050.jpg" />
             </div>
         </div>
         <div id="vezérlő">
-            <div class="gomb kattintható">Vissza</div>
-            <div class="gomb kattintható">Előre</div>
+            <div id="V" class="gomb kattintható" onclick="Előre()" >Vissza</div>
+            <div id="E" class="gomb kattintható" onclick="Hátra()">Előre</div>
         </div>
     </div>
 </body>
