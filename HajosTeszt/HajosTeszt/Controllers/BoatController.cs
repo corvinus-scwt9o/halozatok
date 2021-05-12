@@ -21,6 +21,7 @@ namespace HajosTeszt.Controllers
 
             return kérdésekSzáma;
         }
+
         [HttpGet]
         [Route("questions/{sorszám}")]
         public ActionResult M2(int sorszám)
