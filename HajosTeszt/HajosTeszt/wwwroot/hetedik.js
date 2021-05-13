@@ -243,30 +243,30 @@ function init() {
 
     if (!localStorage.getItem("hotList")) {
         for (let i = 0; i < questionsInHotList; i++) {
-            kérdésBetöltés(nextQuestion, i);
+            kerdesBetöltés(nextQuestion, i);
             nextQuestion++;
         }
     }
     else {
         console.log("Localstorageból olvasott kérdések betöltése");
-        kérdésMegjelenítés();
+        kerdesMegjelenítés();
     }
 }
 
-function kérdésMegjelenítés() {
-    let kérdés = hotList[displayedQuestion].question;
-    console.log(kérdés);
-    document.getElementById("kérdés_szöveg").innerText = kérdés.questionText;
-    document.getElementById("válasz1").innerText = kérdés.answer1;
-    document.getElementById("válasz2").innerText = kérdés.answer2;
-    document.getElementById("válasz3").innerText = kérdés.answer3;
-    if (kérdés.image) {
-        document.getElementById("kép").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
-        document.getElementById("kép").style.display = "block";
+function kerdesMegjelenítés() {
+    let kerdes = hotList[displayedQuestion].question;
+    console.log(kerdes);
+    document.getElementById("kérdés_szöveg").innerText = kerdes.questionText;
+    document.getElementById("válasz1").innerText = kerdes.answer1;
+    document.getElementById("válasz2").innerText = kerdes.answer2;
+    document.getElementById("válasz3").innerText = kerdes.answer3;
+    if (kerdes.image) {
+        document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kerdes.image;
+        document.getElementById("kép1").style.display = "block";
 
     }
     else {
-        document.getElementById("kép").style.display = "none";
+        document.getElementById("kép1").style.display = "none";
     }
 
     for (var i = 1; i <= 3; i++) {
@@ -277,67 +277,60 @@ function kérdésMegjelenítés() {
 
 
 
-function Vissza() {
-
-
+function Hátra() {
     displayedQuestion--;
     if (displayedQuestion < 0) displayedQuestion = questionsInHotList - 1;
-    kérdésMegjelenítés()
-
-
-
+    kerdesMegjelenítés()
 }
 
-function Elore() {
+function Előre() {
 
     clearTimeout(timerHandler);
 
     displayedQuestion++;
     if (displayedQuestion === questionsInHotList) displayedQuestion = 0;
-    kérdésMegjelenítés()
-
-
+    kerdesMegjelenítés()
 }
 
 
-function valasz1Click() {
+function válasz1Click() {
 
-    valaszCheck(1);
+    válaszCheck(1);
 }
 
-function valasz2Click() {
+function válasz2Click() {
 
-    valaszCheck(2);
+    válaszCheck(2);
 }
 
-function valasz3Click() {
+function válasz3Click() {
 
-    valaszCheck(3);
+    válaszCheck(3);
 }
 
 
 
-function valaszCheck(n) {
+function válaszCheck(n) {
 
 
-    let kérdés = hotList[displayedQuestion].question;
-    if (n === kérdés.correctAnswer) {
+    let kerdes = hotList[displayedQuestion].question;
+    if (n === kerdes.correctAnswer) {
         document.getElementById("válasz" + n).classList.add("jó")
         hotList[displayedQuestion].goodAnswers++;
         if (hotList[displayedQuestion].goodAnswers === 3) {
-            kérdésBetöltés(nextQuestion, displayedQuestion);
+            kerdesBetöltés(nextQuestion, displayedQuestion);
             nextQuestion++;
         }
     }
     else {
         document.getElementById("válasz" + n).classList.add("rossz")
-        document.getElementById("válasz" + kérdés.correctAnswer).classList.add("jó")
+        document.getElementById("válasz" + kerdes.correctAnswer).classList.add("jó")
         hotList[displayedQuestion].goodAnswers = 0;
     }
 
     document.getElementById("válaszok").style.pointerEvents = "none";
 
-    timerHandler = setTimeout(Elore, 3000);
+    timerHandler = setTimeout(Előre, 3000);
 
     localStorage.setItem("hotList", JSON.stringify(hotList));
     localStorage.setItem("displayedQuestion", displayedQuestion);
@@ -357,7 +350,7 @@ function Clear() {
 }
 
 
-function kérdésBetöltés(questionNumber, destination) {
+function kerdesBetöltés(questionNumber, destination) {
     fetch(`/questions/${questionNumber}`)
         .then(
             result => {
@@ -375,7 +368,7 @@ function kérdésBetöltés(questionNumber, destination) {
             console.log(`A ${questionNumber}. kérdés letöltve a hot list ${destination}. helyére`);
             if (displayedQuestion === undefined && destination === 0) {
                 displayedQuestion = 0;
-                kérdésMegjelenítés();
+                kerdesMegjelenítés();
             }
         })
 }    
